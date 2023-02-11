@@ -4,6 +4,7 @@ const data = {
         name: 'Scooter',
         category: 'Scooter',
         image: '/images/steelgray.png',
+        product:'gray',
         price: 60000,
         rating: 4.2,
         numReviews: 10,

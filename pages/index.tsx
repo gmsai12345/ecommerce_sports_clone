@@ -1,22 +1,25 @@
 import React from "react";
-import Link from "next/link";
 import product from "../product"
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import NextLink from "next/link";
+import Layout from ".././components/layout"
 export default function Navbar() {
   return (
+    <Layout>
     <div>
     <nav className="nav">
-      <Link href="/" className="site-title">
+      <NextLink href="/" className="site-title">
         Welectric
-      </Link>
+      </NextLink>
       <ul>
-        <Link href="/Cart" passHref>Cart</Link>
-        <Link href="/Login" passHref>Login</Link>
+        <NextLink href="/Cart" passHref><ShoppingCartIcon/></NextLink>
+        <NextLink href="/Login" passHref>Login</NextLink>
       </ul>
     </nav>
     <h1>Products</h1>
 <div>
   {product.products.map((product) => (
+    <NextLink href={`/product/${product.product}`} passHref>
     <div style={{ width: '33.33%', padding: '1em' }}>
       <div style={{ border: '1px solid gray' }}>
         <img src={product.image} alt={product.name} style={{ width: '100%', height: '200px' }}/>
@@ -29,11 +32,13 @@ export default function Navbar() {
         </div>
       </div>
     </div>
+    </NextLink>
   ))}
 </div>
 
 
   </div>
+  </Layout>
   );
 }
 
