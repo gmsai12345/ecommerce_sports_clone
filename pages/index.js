@@ -68,10 +68,9 @@ import NextLink from "next/link"
 import axios from 'axios';
 import Layout from '@/components/layout'; 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('http://localhost:3000/api/products');
