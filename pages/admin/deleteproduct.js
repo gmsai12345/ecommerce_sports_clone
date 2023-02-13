@@ -1,0 +1,1 @@
+// do it using getserversideprops

@@ -34,6 +34,7 @@
     
 //     </div>)};
 // }
+// do it using getserversideprops
 import React, { useState, useEffect } from 'react';
 import NextLink from "next/link"
 import axios from 'axios';
