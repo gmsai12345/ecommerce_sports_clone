@@ -47,4 +47,6 @@ export default function Navbar() {
   </div>
   );
 }
-
+export async function getServerSideProps(){
+  await db.connect(); // this is must for rendering from clie
+}
