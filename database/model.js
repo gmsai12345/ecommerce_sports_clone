@@ -11,6 +11,7 @@ const modelschema = new mongoose.Schema(
         countInStock: { type: Number, required: true, default: 0 },
         colour: { type: String, required: true },
         description: { type: String, required: true },
+        owner: { type: String, required: true}
     },
     {
         timestamps:true,
