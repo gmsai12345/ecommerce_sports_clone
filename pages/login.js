@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
 import NextLink from 'next/link';
 import Layout from '@/components/layout';
-
+import axios from 'axios';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+      const response = await axios.post('/api/login', {
           email,
-          password
-        })
+          password        
       });
-
-      const data = await response.json();
+      alert('login successful')
     }
     catch (err) {
       setError(err.message);
@@ -30,7 +24,7 @@ const LoginPage = () => {
     <Layout>
     <div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <form onSubmit={handleSubmit} style={{ width: '400px' }}>
+          <form style={{ width: '400px' }}>
             <h2>Login</h2>
             <div style={{ margin: '1em 0' }}>
               <label htmlFor="email">Email:</label>
@@ -53,7 +47,7 @@ const LoginPage = () => {
               />
             </div>
             <div style={{ margin: '1em 0' }}>
-              <button type="submit">Login</button>
+              <button type="submit" onClick={handleSubmit}>Login</button>
             </div>
             <NextLink href="/signup">
               Not a member yet? Sign up

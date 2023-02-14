@@ -24,6 +24,7 @@
     "eslint-config-next": "13.1.6",
     "js-cookie": "^3.0.1",
     "js-cookies": "^1.0.4",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.1",
     "next": "13.1.6",
