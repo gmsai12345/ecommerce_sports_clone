@@ -28,7 +28,7 @@ const data = {
         owner: 'John',
         countInStock: 20,
         description: 'comfortable scooter',
-        owner:'John',
+        
       },
       {
         name: 'Scooter ev2',
@@ -42,7 +42,6 @@ const data = {
         owner: 'John',
         countInStock: 20,
         description: 'comfortable scooter',
-        owner:'John',
       },
       {
         name: 'Scooter ev3',
@@ -56,7 +55,6 @@ const data = {
         owner: 'John',
         countInStock: 20,
         description: 'comfortable scooter',
-        owner:'John',
       },
       {
         name: 'Scooter ev4',
@@ -70,7 +68,6 @@ const data = {
         owner: 'John',
         countInStock: 20,
         description: 'comfortable scooter',
-        owner:'John',
       },
       {
         name: 'Scooter ev5',
@@ -84,7 +81,6 @@ const data = {
         owner: 'John',
         countInStock: 20,
         description: 'comfortable scooter',
-        owner:'John',
       },
       {
         name: 'Scooter ev5',
@@ -98,7 +94,6 @@ const data = {
         owner: 'John',
         countInStock: 20,
         description: 'comfortable scooter',
-        owner:'John',
       },
     ],
   };

@@ -38,7 +38,7 @@ const ProductList = ({ products }) => {
               </NextLink>
               <p style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>${product.price}</span>
-                <button onClick = {itemdelete} style={{ backgroundColor: 'blue', color: 'white' }}>
+                <button  style={{ backgroundColor: 'blue', color: 'white' }}>
                   delete item
                 </button>
               </p>
@@ -46,6 +46,9 @@ const ProductList = ({ products }) => {
           </div>
           </div>
         ))}
+        <NextLink href={`/admin/addproduct`} passHref>
+        <button type='Submit'>Add product</button>
+        </NextLink>     
       </Layout>
     </div>
   );
