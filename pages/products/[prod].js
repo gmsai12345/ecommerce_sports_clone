@@ -35,24 +35,73 @@
 //     </div>)};
 // }
 // do it using getserversideprops
-import React, { useState, useEffect } from 'react';
-import NextLink from "next/link"
-import axios from 'axios';
-import Layout from '@/components/layout'; 
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useRouter } from 'next/router';
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
-  const router = useRouter()
-  const { prod } = router.query;
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(`http://localhost:3000/api/products/${prod}`);
-      setProducts(result.data);
-    };
+// import React, { useState, useEffect } from 'react';
+// import NextLink from "next/link"
+// import axios from 'axios';
+// import Layout from '@/components/layout'; 
+// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import { useRouter } from 'next/router';
+// const ProductList = () => {
+//   const [products, setProducts] = useState([]);
+//   const router = useRouter()
+//   const { prod } = router.query;
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const result = await axios.get(`http://localhost:3000/api/products/${prod}`);
+//       setProducts(result.data);
+//     };
 
-    fetchData();
-  }, [prod]);
+//     fetchData();
+//   }, [prod]);
+
+//   return (
+//     <div>
+//       <Layout>
+//         <div>
+//           <nav className="nav">
+//             <NextLink href="/" className="site-title">
+//               Welectric
+//             </NextLink>
+//             <ul>
+//               <NextLink href="/cart" passHref><ShoppingCartIcon /></NextLink>
+//               <NextLink href="/login" passHref>Login</NextLink>
+//             </ul>
+//           </nav>
+//         </div>
+//         <div>
+//           <div style={{ width: '33.33%', padding: '1em' }}>
+//             <div style={{ border: '1px solid gray' }}>
+//               <img src={products.image} alt={products.name} style={{ width: '100%', height: '640px' }} />
+//               <div style={{ padding: '1em' }}>
+//                 <p>{products.name}</p>
+//                 <p>Rating: {products.rating} <br />{products.numReviews}: reviews</p>
+//                 <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+//                   <span>{products.description}</span>
+//                   <span><br /><br />{products.price} rupees</span>
+//                   {products.countInStock !== 0 ? (
+//                     <button style={{ backgroundColor: 'blue', color: 'white' }}>Add to cart</button>
+//                   ) : (
+//                     <p>currently not available</p>
+//                   )}
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </Layout>
+//     </div>
+//   );
+// };
+
+// export default ProductList;
+import Layout from '@/components/layout';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import NextLink from 'next/link';
+
+const ProductList = ({ products }) => {
+  const router = useRouter();
 
   return (
     <div>
@@ -92,6 +141,17 @@ const ProductList = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { prod } = context.query;
+  const result = await axios.get(`http://localhost:3000/api/products/${prod}`);
+  const products = result.data;
+  return {
+    props: {
+      products,
+    },
+  };
+}
 
 export default ProductList;
 
