@@ -7,8 +7,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
  
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     const user = { name, email, password,isAdmin};
     try {
       const response = await axios.post('/api/register', user);
@@ -46,7 +45,7 @@ const Register = () => {
       <br/>
       <label style={{ margin: '1em 0' }}>
         Admin :
-         <input type="checkbox" value={isAdmin} onClick={(e) => setIsAdmin('true')} /> 
+        <input type="checkbox" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
       </label>
       <br/>
       <br/>
