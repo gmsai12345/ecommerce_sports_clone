@@ -3,7 +3,6 @@ import NextLink from 'next/link';
 import Layout from '@/components/layout';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import axios from 'axios';
-import updatecart from "./[owner]/updatecart"
 import { useState } from 'react';
 const ProductList = ({ products }) => {
   const [name, setName] = useState('');
@@ -21,7 +20,7 @@ const ProductList = ({ products }) => {
     event.preventDefault();
     const data = { name,category,description,prod,owner,colour,countInStock,price};
     try {
-      const response = await axios.delete(`/api/admin/${owner}/deleteproduct/${prod}`, data);
+      const response = await axios.delete(`/api/admin/deleteproduct`, data);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -33,7 +32,7 @@ const ProductList = ({ products }) => {
     setIsVisible1(!isVisible1);
     const data = { name,category,description,prod,owner,colour,countInStock,price,image};
     try {
-      const response = await axios.post(`/api/admin/${owner}/updateproduct/${products.prod}`, data);
+      const response = await axios.post(`/api/admin/updateproduct`, data);
       console.log(data);
     } catch (error) {
       console.log(error);
