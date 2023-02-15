@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import NextLink from 'next/link';
 import Layout from '@/components/layout';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+
 const LoginPage = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,6 +18,7 @@ const LoginPage = () => {
           password        
       });
       alert('login successful')
+      router.push('/');
     }
     catch (err) {
       setError(err.message);

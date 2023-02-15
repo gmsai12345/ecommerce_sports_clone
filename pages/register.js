@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Layout from "../././components/layout"
+import { useRouter } from 'next/router';
+
 const Register = () => {
+  const router = useRouter();
+
   const [isAdmin,setIsAdmin] = useState('false')
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,6 +16,8 @@ const Register = () => {
     try {
       const response = await axios.post('/api/register', user);
       console.log(response.data);
+      alert('register successful');
+      router.push('/');
     } catch (error) {
       console.log(error);
     }

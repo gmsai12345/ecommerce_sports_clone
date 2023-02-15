@@ -2,7 +2,10 @@
 import React,{useState} from 'react'
 import Layout from '../../components/layout';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+
 function addproduct() {
+  
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [prod, setProd] = useState('');
@@ -18,6 +21,8 @@ function addproduct() {
     try {
       const response = await axios.post('/api/admin/addproduct', data);
       console.log(data);
+      alert('added product')
+      router.push('/');
     } catch (error) {
       console.log(error);
     }

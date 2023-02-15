@@ -22,6 +22,7 @@ const ProductList = ({ products }) => {
     try {
       const response = await axios.delete(`/api/admin/deleteproduct`, data);
       console.log(data);
+      alert('deleted successfully, reload page');
     } catch (error) {
       console.log(error);
     }
@@ -34,6 +35,7 @@ const ProductList = ({ products }) => {
     try {
       const response = await axios.post(`/api/admin/updateproduct`, data);
       console.log(data);
+      alert('updated successfully,reload page');
     } catch (error) {
       console.log(error);
     }

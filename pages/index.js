@@ -123,19 +123,38 @@
 
 // export default ProductList;
 // // do it using getserversideprops
-import React from 'react';
+import React, { useState } from 'react';
 import NextLink from "next/link"
 import axios from 'axios';
 import Layout from '@/components/layout'; 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useRouter } from 'next/router';
 
 const ProductList = ({ products }) => {
+  const router = useRouter();
+  const [category,setCategory] = useState('');
+  const categorysubmit = (e,category) =>{
+    setCategory(e.target.value);
+    alert('redirect to ' + category)
+    router.push(`/categories/${category}`);
+
+
+  }
   return (
     <div>
       <Layout>
         <div>
+        <select value = {category} onChange={categorysubmit}>
+          {products.map((product) => (
+             
+             <option value="volvo">{product.colour}</option>
+            
+          ))}
+          </select>
           <h1>Products</h1>
           {products.map((product) => (
+            <div>
+             
             <div style={{ width: '33.33%', padding: '1em' }}>
               <div style={{ border: '1px solid gray' }}>
                 <NextLink href={`/products/${product.prod}`} passHref>
@@ -149,6 +168,7 @@ const ProductList = ({ products }) => {
                   <button style={{ backgroundColor: 'blue', color: 'white' }}>Add to cart</button>
                 </p>
               </div>
+            </div>
             </div>
           ))}
         </div>
