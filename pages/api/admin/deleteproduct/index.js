@@ -1,16 +1,13 @@
 import nc from 'next-connect';
-import db from '../../.././.././../database/db';
-import model from '../../.././.././../database/model';
+import db from '../../../../database/db';
+import model from '../../../../database/model';
 
 const handler = nc();
 
 handler.delete(async (req, res) => {
   await db.connect();
-
-  const prod = req.query.prod;
-
   try {
-    const product = await model.findById(prod);
+    const product = await model.findOne({prod:req.body.prod});
 
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });

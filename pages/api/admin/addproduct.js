@@ -1,11 +1,11 @@
 import nc from "next-connect";
 
-import model from "../../../database/model";
+import Product from "../../../database/model";
 import db from "../../../database/db";
  const handler = nc();
  handler.post(async(req,res) =>{
   await db.connect();
-  const newdata = new model({ 
+  const data = new Product({ 
     name: req.body.name,
     category: req.body.category,
     prod: req.body.prod,
@@ -16,11 +16,12 @@ import db from "../../../database/db";
     colour: req.body.colour, 
     image:req.body.image,
      });
+     const newdata = await data.save();
      console.log(newdata)
-  await db.disconnect();
+ 
   
     res.send({
-        _id: newuser._id,
+        _id: newdata._id,
         name: newdata.name,
         category: newdata.category,
         prod: newdata.prod,
@@ -31,5 +32,7 @@ import db from "../../../database/db";
         colour: newdata.colour,
         image: newdata.image,
       });
+      await db.disconnect();
     
   });
+  export default handler;

@@ -12,7 +12,7 @@ import { signToken } from "../../authjwt";
     password: bcrypt.hashSync(req.body.password),
     isAdmin: req.body.isAdmin, });
     const user = await newuser.save();
-  await db.disconnect();
+  // await db.disconnect();
   
     const token  = signToken(user);
     res.send({
@@ -22,7 +22,7 @@ import { signToken } from "../../authjwt";
         email: user.email,
         isAdmin: user.isAdmin,
       });
-    
+      await db.disconnect();
   });
 
   export default handler;
