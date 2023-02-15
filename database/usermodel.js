@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
-
-const userSchema = new mongoose.Schema(
+const { Schema } = mongoose;
+mongoose.Promise = global.Promise;
+const userSchema = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -12,5 +13,8 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.models.User || mongoose.model('User', userSchema);
+const User = mongoose.models.User
+  ? mongoose.model('User')
+  : mongoose.model('User', userSchema);
+
 export default User;

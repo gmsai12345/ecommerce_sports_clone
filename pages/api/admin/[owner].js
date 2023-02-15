@@ -1,6 +1,6 @@
 import nc from "next-connect"
-import db from "../../../../database/db"
-import model from "../../../../database/model"
+import db from "../../../database/db"
+import model from "../../../database/model"
 const handler = nc();
 handler.get(async(req,res) => {
     const {owner} = req.query;

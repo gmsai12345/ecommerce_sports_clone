@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-const modelschema = new mongoose.Schema(
+const { Schema } = mongoose;
+mongoose.Promise = global.Promise;
+const modelschema = new Schema(
      { 
         name: { type: String, required: true },
         category: { type: String, required: true },
@@ -17,6 +19,9 @@ const modelschema = new mongoose.Schema(
         timestamps:true,
     }
 );
-const product  = mongoose.model.product || mongoose.model('Product',modelschema);
-export default product;
+const Product = mongoose.models.Product
+  ? mongoose.model('Product')
+  : mongoose.model('Product', modelschema);
+
+export default Product;
 // models done for database

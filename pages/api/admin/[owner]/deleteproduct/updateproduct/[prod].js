@@ -1,27 +1,27 @@
 import nc from 'next-connect';
-import db from '../../../database/db';
-import Product from '../../../database/model/product';
+import db from '../../../../../../database/db';
+import Product from '../../../../../../database/model';
 
 const handler = nc();
 
 handler.put(async (req, res) => {
-  await db.connect();
-
-  const prod = req.query.prod;
-
   try {
+    await db.connect();
+    
+    const prod = req.query.prod;
+
     const product = await Product.findById(prod);
 
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
-
+ 
     product.name = req.body.name;
     product.category = req.body.category;
     product.prod = req.body.prod;
     product.owner = req.body.owner;
     product.countInStock = req.body.countInStock;
-    product.description = req.body.category;
+    product.description = req.body.description;
     product.price = req.body.price;
     product.colour = req.body.colour;
 

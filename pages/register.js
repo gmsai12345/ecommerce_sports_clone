@@ -20,33 +20,39 @@ const Register = () => {
 
   return (
     <Layout>
-    <form onSubmit={handleSubmit}>
-      <label>
+      <br/>
+      <br/>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '400px' }}>
+      <label style={{ margin: '1em 0' }}>
         Name:
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
       </label>
       <br/>
       <br/>
       <br/>
-      <label>
+      <label style={{ margin: '1em 0' }}>
         Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
       </label>
       <br/>
       <br/>
       <br/>
-      <label>
+      <label style={{ margin: '1em 0' }}>
         Password:
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </label>
       <br/>
       <br/>
-      <label>
+      <label style={{ margin: '1em 0' }}>
         Admin :
-        {/* <input type="checkbox" value={isAdmin} onChange={setIsAdmin('true')} /> */}
+         <input type="checkbox" value={isAdmin} onClick={(e) => setIsAdmin('true')} /> 
       </label>
-      <button type="submit">Register</button>
-    </form>
+      <br/>
+      <br/>
+      <button type="submit" onClick={handleSubmit}>Register</button>
+      </div>
+      </div>
     </Layout>
   );
 };

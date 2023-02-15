@@ -46,10 +46,14 @@ const LoginPage = () => {
                 required
               />
             </div>
+            <NextLink href="/">
             <div style={{ margin: '1em 0' }}>
+            
               <button type="submit" onClick={handleSubmit}>Login</button>
+              
             </div>
-            <NextLink href="/signup">
+            </NextLink>
+            <NextLink href="/register">
               Not a member yet? Sign up
             </NextLink>
           </form>

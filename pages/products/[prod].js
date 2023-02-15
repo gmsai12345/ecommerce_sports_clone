@@ -107,17 +107,6 @@ const ProductList = ({ products }) => {
     <div>
       <Layout>
         <div>
-          <nav className="nav">
-            <NextLink href="/" className="site-title">
-              Welectric
-            </NextLink>
-            <ul>
-              <NextLink href="/cart" passHref><ShoppingCartIcon /></NextLink>
-              <NextLink href="/login" passHref>Login</NextLink>
-            </ul>
-          </nav>
-        </div>
-        <div>
           <div style={{ width: '33.33%', padding: '1em' }}>
             <div style={{ border: '1px solid gray' }}>
               <img src={products.image} alt={products.name} style={{ width: '100%', height: '640px' }} />

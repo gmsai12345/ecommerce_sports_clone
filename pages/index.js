@@ -134,15 +134,6 @@ const ProductList = ({ products }) => {
     <div>
       <Layout>
         <div>
-          <nav className="nav">
-            <NextLink href="/" className="site-title">
-              Welectric
-            </NextLink>
-            <ul>
-              <NextLink href="/cart" passHref><ShoppingCartIcon/></NextLink>
-              <NextLink href="/login" passHref>Login</NextLink>
-            </ul>
-          </nav>
           <h1>Products</h1>
           {products.map((product) => (
             <div style={{ width: '33.33%', padding: '1em' }}>

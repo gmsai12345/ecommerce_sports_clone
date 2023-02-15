@@ -14,6 +14,7 @@ import db from "../../../database/db";
     description: req.body.description,
     price: req.body.price,
     colour: req.body.colour, 
+    image:req.body.image,
      });
      console.log(newdata)
   await db.disconnect();
@@ -28,6 +29,7 @@ import db from "../../../database/db";
         description: newdata.description,
         price: newdata.price,
         colour: newdata.colour,
+        image: newdata.image,
       });
     
   });

@@ -73,4 +73,4 @@ function sidebar() {
   )
 }
 
-export default sidebar
+export default sidebar;
