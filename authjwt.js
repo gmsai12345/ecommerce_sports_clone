@@ -9,7 +9,7 @@ const signToken = (user) => {
       isAdmin: user.isAdmin,
     },
 
-    process.env.JWT_SECRET,
+    'login key',
     {
       expiresIn: '30d',
     }
