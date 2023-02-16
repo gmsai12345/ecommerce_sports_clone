@@ -8,22 +8,20 @@ import { useRouter } from 'next/router';
 const LoginPage = () => {
   const router = useRouter();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [name, setName] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', {
-          email,
-          password        
+      const response = await axios.post('/api/admin', {
+          name,
+                  
       });
       alert('login successful')
-      router.push('/');
+      router.push(`/admin/${name}`);
     }
     catch (err) {
       setError(err.message);
-      alert('wrong password or email id')
+      alert('wrong name');
     }
   }
 
@@ -34,32 +32,22 @@ const LoginPage = () => {
           <form style={{ width: '400px' }}>
             <h2>Login</h2>
             <div style={{ margin: '1em 0' }}>
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Name:</label>
               <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="name"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
-            <div style={{ margin: '1em 0' }}>
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <NextLink href="/">
+            
+            
             <div style={{ margin: '1em 0' }}>
             
-              <button type="submit" onClick={handleSubmit}>Login</button>
+              <button type="submit" onClick={handleSubmit}>Submit</button>
               
             </div>
-            </NextLink>
             <NextLink href="/register">
               Not a member yet? Sign up
             </NextLink>

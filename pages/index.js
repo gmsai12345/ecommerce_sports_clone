@@ -123,11 +123,10 @@
 
 // export default ProductList;
 // // do it using getserversideprops
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import NextLink from "next/link"
 import axios from 'axios';
 import Layout from '@/components/layout'; 
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useRouter } from 'next/router';
 
 const ProductList = ({ products }) => {
@@ -141,10 +140,27 @@ const ProductList = ({ products }) => {
 
 
   }
+  // const { state, dispatch } = useContext(Store);
+  // const addToCartHandler = async (product) => {
+  //   const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+  //   const quantity = existItem ? existItem.quantity + 1 : 1;
+  //   const { data } = await axios.get(`/api/products/${product._id}`);
+  //   if (data.countInStock < quantity) {
+  //     window.alert('Sorry. Product is out of stock');
+  //     return;
+  //   }
+  //   dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+  //   router.push('/cart');
+  // };
+ 
   return (
     <div>
       <Layout>
         <div>
+          <p>Login as an Admin</p>
+          <NextLink href={'/admin'} passHref>
+            <button type="submit">Enter</button>
+            </NextLink>
           <p>Select category Filter:</p>
         <select value = {category} onChange={categorysubmit}>
           {products.map((product) => (

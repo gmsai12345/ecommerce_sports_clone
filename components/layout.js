@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
-import Store from ".././store"
+
+
 import NextLink from "next/link";
+import { Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import Welectric from ".././public/images/Welectric.png"
 export default function Layout({children}) {
+  // const { state, dispatch } = useContext(Store);
+  // const {cart} = state;
   return (
     <div>
       <div>
@@ -14,6 +18,9 @@ export default function Layout({children}) {
             <ul>
               <NextLink href="/cart" passHref>
                 <ShoppingCartIcon />
+                <Badge
+                      
+                    ></Badge>
               </NextLink>
               <NextLink href="/login" passHref>
                 Login

@@ -99,10 +99,21 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-
+import React,{useContext} from 'react';
 const ProductList = ({ products }) => {
   const router = useRouter();
-
+  // const { dispatch } = useContext(Store);
+  // const addToCartHandler = async (product) => {
+  //   const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+  //   const quantity = existItem ? existItem.quantity + 1 : 1;
+  //   const { data } = await axios.get(`/api/products/${product._id}`);
+  //   if (data.countInStock < 0) {
+  //     window.alert('Sorry. Product is out of stock');
+  //     return;
+  //   }
+  //   dispatch({ type: 'CART_ADD_ITEM', payload: { ...products, quantity } });
+    
+  // };
   return (
     <div>
       <Layout>
@@ -117,7 +128,7 @@ const ProductList = ({ products }) => {
                   <span>{products.description}</span>
                   <span><br /><br />{products.price} rupees</span>
                   {products.countInStock !== 0 ? (
-                    <button style={{ backgroundColor: 'blue', color: 'white' }}>Add to cart</button>
+                    <button  onClick={addToCartHandler} style={{ backgroundColor: 'blue', color: 'white' }}>Add to cart</button>
                   ) : (
                     <p>currently not available</p>
                   )}
