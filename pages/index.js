@@ -133,8 +133,9 @@ import { useRouter } from 'next/router';
 const ProductList = ({ products }) => {
   const router = useRouter();
   const [category,setCategory] = useState('');
-  const categorysubmit = (e,category) =>{
-    setCategory(e.target.value);
+  const categorysubmit = (e) =>{
+    const category = e.target.value;
+    setCategory(category);
     alert('redirect to ' + category)
     router.push(`/categories/${category}`);
 
@@ -144,10 +145,11 @@ const ProductList = ({ products }) => {
     <div>
       <Layout>
         <div>
+          <p>Select category Filter:</p>
         <select value = {category} onChange={categorysubmit}>
           {products.map((product) => (
              
-             <option value="volvo">{product.colour}</option>
+             <option value = {product.colour}>{product.colour}</option>
             
           ))}
           </select>
